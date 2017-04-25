@@ -6,22 +6,22 @@
 	<link rel="stylesheet" href="css/basics.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
-	<a href="/php-pdo/read.php">Liste des données</a>
+	<a href="read.php">Liste des données</a>
 	<h1>Ajouter</h1>
-	<form action="" method="post">
+	<form action="" method="POST">
 		<div>
 			<label for="name">Name</label>
-			<input type="text" name="name" value="">
+			<input type="text" name="name" value="Essai">
 		</div>
 
 		<div>
 			<label for="difficulty">Difficulté</label>
 			<select name="difficulty">
-				<option value="très facile">Très facile</option>
+				<option value="tres facile">Tres facile</option>
 				<option value="facile">Facile</option>
 				<option value="moyen">Moyen</option>
 				<option value="difficile">Difficile</option>
-				<option value="très difficile">Très difficile</option>
+				<option value="tres difficile">Tres difficile</option>
 			</select>
 		</div>
 		
@@ -39,5 +39,40 @@
 		</div>
 		<button type="submit" name="button">Envoyer</button>
 	</form>
-</body>
-</html>
+
+	<?php
+	
+	try {
+		$connect=new PDO('mysql:host=localhost;dbname=reunion_island','root','root');
+	}
+	catch(PDOException $e){
+		print "Erreur !:".$e->getMessage()."<br/>";
+		die();
+	}
+
+	$name=$_POST['name'];
+	$difficulty=$_POST['difficulty'];
+	$distance=(int)$_POST['distance'];
+	$duration=(int)$_POST['duration'];
+	$height_difference=(int)$_POST['height_difference'];
+	$rand = $connect->prepare("INSERT INTO hiking (name, difficulty, distance, duration, height_difference) VALUES (:name, :difficulty, :distance, :duration, :height_difference);" );
+
+
+	$result = $rand->execute(array(':name' => $name,
+		':difficulty' => $difficulty,
+		':distance' =>$distance,
+		':duration' =>$duration,
+		':height_difference'=>$height_difference,
+		));
+	if ($result === true){
+		echo "<script>alert('La randonnée a été ajoutée avec succès')</script>";
+
+
+	}
+	?>
+
+
+
+
+
+	</html>

@@ -69,7 +69,7 @@ Tout d'abord, dans le tableau des randonnées du fichier *read.php*, ajoutez un 
 Sur cette page on va pouvoir faire les modifications pour la randonnée choisie. Les champs du formulaire présents sur cette page doivent être pré-remplis à partir
 des informations de la randonnée choisie !
 
-TIPS : Afin de différencier les randonnées il faudra se baser sur l'id et peut-être (re)voir comment faire passer des variables entre des pages web.
+TIPS : Afin de différencier les randonnées il faudra se baser sur l'id et peut-être (re)voir comment faire passer des variables entre des pages web. 
 
 # Supprimer une randonnée
 
